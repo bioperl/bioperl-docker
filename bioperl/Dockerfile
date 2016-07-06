@@ -67,7 +67,6 @@ RUN cpanm \
   XML::SAX \
   XML::SAX::Writer \
   XML::Simple \
-  XML::LibXML \
   XML::Twig \
   XML::Writer \
   SVG \
