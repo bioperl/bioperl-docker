@@ -3,7 +3,7 @@
 # Based on Ubuntu
 ############################################################
 
-# Set the base image to Ubuntu
+# Set the base image to the BioPerl prebuilt prerequisites image
 FROM bioperl/bioperl-deps
 
 # File Author / Maintainer
