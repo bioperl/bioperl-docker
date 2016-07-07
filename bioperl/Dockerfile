@@ -16,12 +16,15 @@ RUN cpanm \
   Bio::Phylo
 
 # -------------------------------------------------------------
-# Install BioPerl from GitHub current master branch.
+# Install BioPerl from the last stable version registered on CPAN.
 #
 # This is the actual installation step of BioPerl itself :-)
 # -------------------------------------------------------------
-RUN cpanm -v \
-  https://github.com/bioperl/bioperl-live/archive/master.tar.gz
+#
+# In theory, we should just be able to install BioPerl. But for some
+# reason that currently picks up the version _prior_ to the last stable
+# one rather than the last.
+RUN cpanm -v Bio::Root::Root
 
 # Install modules recommended by BioPerl that depend on BioPerl.
 # (Don't ask. See above.)
