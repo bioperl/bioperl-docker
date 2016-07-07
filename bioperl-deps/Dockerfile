@@ -1,5 +1,5 @@
 ############################################################
-# Dockerfile to build a BioPerl container image
+# Dockerfile to build BioPerl dependencies and prerequisites
 # Based on Ubuntu
 ############################################################
 
@@ -81,6 +81,7 @@ RUN cpanm \
   Error \
   Graph \
   GraphViz \
+  Inline::C \
   PostScript::TextBlock \
   Set::Scalar \
   Sort::Naturally \
@@ -108,23 +109,3 @@ RUN cpanm \
   GD \
   SVG \
   SVG::Graph
-
-# Install modules recommended by BioPerl.
-# We can't include Bio::ASN1::EntrezGene here yet, because it declares
-# a dependency on BioPerl, thus pulling in BioPerl first.
-RUN cpanm \
-  Inline::C \
-  Bio::Phylo
-
-# -------------------------------------------------------------
-# Install BioPerl from GitHub current master branch.
-#
-# This is the actual installation step of BioPerl itself :-)
-# -------------------------------------------------------------
-RUN cpanm -v \
-  https://github.com/bioperl/bioperl-live/archive/master.tar.gz
-
-# Install modules recommended by BioPerl that depend on BioPerl.
-# (Don't ask. See above.)
-RUN cpanm \
-  Bio::ASN1::EntrezGene
