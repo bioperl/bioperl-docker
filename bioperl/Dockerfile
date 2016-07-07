@@ -109,12 +109,22 @@ RUN cpanm \
   SVG \
   SVG::Graph
 
-# Install BioPerl last built
-RUN cpanm -v  \
- CJFIELDS/BioPerl-1.6.924.tar.gz 
-
-# Install modules that depend on BioPerl
+# Install modules recommended by BioPerl.
+# We can't include Bio::ASN1::EntrezGene here yet, because it declares
+# a dependency on BioPerl, thus pulling in BioPerl first.
 RUN cpanm \
-  Bio::ASN1::EntrezGene \
+  Inline::C \
   Bio::Phylo
 
+# -------------------------------------------------------------
+# Install BioPerl from GitHub current master branch.
+#
+# This is the actual installation step of BioPerl itself :-)
+# -------------------------------------------------------------
+RUN cpanm -v \
+  https://github.com/bioperl/bioperl-live/archive/master.tar.gz
+
+# Install modules recommended by BioPerl that depend on BioPerl.
+# (Don't ask. See above.)
+RUN cpanm \
+  Bio::ASN1::EntrezGene
