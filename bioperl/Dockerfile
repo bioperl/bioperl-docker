@@ -82,9 +82,10 @@ RUN cpanm \
 
 # Install database connectivity packages
 RUN apt-get install --yes \
-  libdbd-mysql \
+  libdbi-perl \
   libdbd-mysql-perl \
-  libdbd-pgsql
+  libdbd-pg-perl \
+  libdbd-sqlite3-perl
 
 RUN cpanm \
   DB_File
