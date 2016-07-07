@@ -1,6 +1,9 @@
 ############################################################
 # Dockerfile to build a BioPerl container image
 # Based on Ubuntu
+#
+# This version installs the latest release on CPAN that is
+# marked as stable, i.e., not as a developer release.
 ############################################################
 
 # Set the base image to the BioPerl prebuilt prerequisites image
