@@ -29,9 +29,6 @@ RUN apt-get install --yes \
   libdb-dev \
   graphviz
 
-##RUN apt-get install --yes \
-## libarchive-zip-perl
-
 # Install perl modules 
 RUN apt-get install --yes cpanminus
 
@@ -96,18 +93,6 @@ RUN apt-get install --yes \
 
 RUN cpanm GD
 
-# Install BioPerl dependancies, mostly from cpan
-##RUN apt-get install --yes \
-## libpixman-1-0 \
-## libpixman-1-dev \
-## libxml-parser-perl \
-## libsoap-lite-perl 
-
-## RUN apt-get install -y \
-## libxml-libxml-perl \
-## libxml-dom-xpath-perl \
-## libxml-libxml-simple-perl \
-## libxml-dom-perl
 
 # Install BioPerl last built
 RUN cpanm -v  \
