@@ -9,6 +9,10 @@ FROM ubuntu:14.04
 # File Author / Maintainer
 MAINTAINER Hilmar Lapp <hlapp@drycafe.net>
 
+# Prevent error messages from debconf about non-interactive frontend
+ARG TERM=linux
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Update the repository sources list
 RUN apt-get update
 
