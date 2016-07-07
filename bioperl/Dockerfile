@@ -1,5 +1,5 @@
 ############################################################
-# Dockerfile to build bioperl container images
+# Dockerfile to build a BioPerl container image
 # Based on Ubuntu
 ############################################################
 
