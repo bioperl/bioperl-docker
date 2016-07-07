@@ -41,6 +41,16 @@ RUN cpanm \
   Test::Memory::Cycle \
   Clone
 
+# Install perl modules for network and SSL (and their dependencies)
+RUN apt-get install --yes \
+  openssl \
+  libssl-dev
+
+RUN cpanm \
+  IO::Socket::INET6 \
+  LWP \
+  LWP::Protocol::https
+
 # Install packages for XML processing
 RUN apt-get install --yes \
   expat \
