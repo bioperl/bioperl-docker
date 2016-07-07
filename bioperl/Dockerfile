@@ -24,9 +24,8 @@ RUN apt-get install --yes \
 
 # Install libraries that BioPerl dependencies depend on
 RUN apt-get install --yes \
-  expat \
-  libexpat-dev \
   libdb-dev \
+  zlib1g-dev \
   graphviz
 
 # Install perl modules 
@@ -42,6 +41,27 @@ RUN cpanm \
   Test::Memory::Cycle \
   Clone
 
+# Install packages for XML processing
+RUN apt-get install --yes \
+  expat \
+  libexpat-dev \
+  libxml2-dev \
+  libxslt1-dev \
+  libgdbm-dev
+
+RUN cpanm \
+  XML::Parser \
+  XML::Parser::PerlSAX \
+  XML::DOM \
+  XML::DOM::XPath \
+  XML::SAX \
+  XML::SAX::Writer \
+  XML::Simple \
+  XML::Twig \
+  XML::Writer \
+  XML::LibXML \
+  XML::LibXSLT
+
 # Install what counts as BioPerl dependencies
 RUN cpanm \
   HTML::TableExtract \
@@ -55,23 +75,10 @@ RUN cpanm \
   Set::Scalar \
   Sort::Naturally \
   Math::Random \
-  Spreadsheet::ParseExcel
-
-# Install XML-dependent packages
-RUN apt-get install --yes \
-    libxml2-dev
-
-RUN cpanm \
-  XML::DOM::XPath \
-  XML::Parser \
-  XML::Parser::PerlSAX \
-  XML::SAX \
-  XML::SAX::Writer \
-  XML::Simple \
-  XML::Twig \
-  XML::Writer \
-  SVG \
-  SVG::Graph
+  Spreadsheet::ParseExcel \
+  IO::String \
+  JSON \
+  Data::Stag
 
 # Install database connectivity packages
 RUN apt-get install --yes \
@@ -80,19 +87,16 @@ RUN apt-get install --yes \
   libdbd-pgsql
 
 RUN cpanm \
-  DBI \
-  Data::Stag \
-  DB_File \
-  DBD::mysql \
-  DBD::Pg \
-  DBD::SQLite
+  DB_File
 
-# Install GD
+# Install GD and other graphics dependencies
 RUN apt-get install --yes \
  libgd2-xpm-dev
 
-RUN cpanm GD
-
+RUN cpanm \
+  GD \
+  SVG \
+  SVG::Graph
 
 # Install BioPerl last built
 RUN cpanm -v  \
