@@ -1,6 +1,6 @@
 # Docker files for BioPerl
 
-This repositories contains Dockerfiles for reproducible builds of
+This repository contains Dockerfiles for reproducible builds of
 BioPerl.
 
 At this point there are only two Dockerfiles, each in its own
@@ -23,7 +23,8 @@ Currently the following tags are available:
 
 * `latest`: Built from the current `master` branch of the bioperl-live
   repository. This image gets automatically rebuilt upon every update
-  to the bioperl-live `master` branch.
+  to the bioperl-live `master` branch that passes the continuous
+  integration test on Travis CI.
 * `stable`: Built from the latest stable release of BioPerl on
   CPAN. This build may change from one major revision to the next if
   the latest stable release on CPAN changes the major revision. This
@@ -39,12 +40,12 @@ released.
 ## bioperl-deps
 
 This image is meant to provide a well-defined reproducible base image
-for BioPerl that has all dependencies of at least the main
-distribution.
+for BioPerl that has pre-installed all dependencies of at least the
+main distribution.
 
 The benefit of this image is to allow anyone to build a version of
 BioPerl on top of this image in a reproducible fashion. Since by far
-the majority of installing BioPerl (or building a BioPerl Docker
+the majority of time when installing BioPerl (or building a BioPerl Docker
 image) is spent installing dependencies, using this image as the base
 image also significantly cuts down on build (or installation) time (on
 Docker Hub from >45 to 5-8 minutes).
