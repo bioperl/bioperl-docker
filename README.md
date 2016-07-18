@@ -26,5 +26,10 @@ The benefit of this image is to allow anyone to build a version of BioPerl on to
 
 The image is available on Docker Hub as [bioperl/bioperl-deps]. At present there is only one tag, `latest`. The dependencies include all needed for BioPerl 1.6.x, and we anticipate also for 1.7.x. None of the dependencies should be incompatible with versions of BioPerl earlier than the current one, so it should be safe building earlier versions of BioPerl off of this image, too.
 
+## Acknowledgements
+
+The initial starting point for this work was the [bioperl-1.6.1924 Dockerfile created by @sophielemoine] at Genomic Paris Centre.
+
 [bioperl/bioperl]: https://hub.docker.com/r/bioperl/bioperl/
 [bioperl/bioperl-deps]: https://hub.docker.com/r/bioperl/bioperl-deps/
+[bioperl-1.6.1924 Dockerfile created by @sophielemoine]: https://github.com/GenomicParisCentre/dockerfiles/blob/master/bioperl/bioperl-1.6.924/Dockerfile
