@@ -21,7 +21,7 @@ RUN cpanm \
 # This is the actual installation step of BioPerl itself :-)
 # -------------------------------------------------------------
 RUN cpanm -v \
-  https://github.com/bioperl/bioperl-live/archive/release-1-6-924.tar.gz
+  https://github.com/bioperl/bioperl-live/archive/release-1-7-0.tar.gz
 
 # Install modules recommended by BioPerl that depend on BioPerl.
 # (Don't ask. See above.)
