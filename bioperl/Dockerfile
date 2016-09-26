@@ -24,10 +24,12 @@ RUN cpanm \
 # This is the actual installation step of BioPerl itself :-)
 # -------------------------------------------------------------
 #
-# In theory, we should just be able to install BioPerl. But for some
-# reason that currently picks up the version _prior_ to the last stable
-# one rather than the last.
-RUN cpanm -v Bio::Root::Root
+# In theory, we should just be able to install BioPerl. But the indexing
+# of releases by CPAN is not currently working in the way it should for
+# BioPerl, since BioPerl doesn't have a hard-coded VERSION declared in
+# each of its >900 source modules. Until this is worked out, we use
+# Bio::Root::Version, which is the place that does hardcode the version.
+RUN cpanm -v Bio::Root::Version
 
 # Install modules recommended by BioPerl that depend on BioPerl.
 # (Don't ask. See above.)
