@@ -8,6 +8,10 @@ At present, the base OS image is Ubuntu 14.04. This may change in the future, in
 
 ## bioperl
 
+[![Docker Hub Repository](https://img.shields.io/docker/automated/bioperl/bioperl.svg)](https://hub.docker.com/r/bioperl/bioperl/) [![Docker Hub Pulls](https://img.shields.io/docker/pulls/bioperl/bioperl.svg)](https://hub.docker.com/r/bioperl/bioperl/) [![Docker Hub Stars](https://img.shields.io/docker/stars/bioperl/bioperl.svg)](https://hub.docker.com/r/bioperl/bioperl/)
+
+[![Docker Repository on Quay](https://quay.io/repository/bioperl/bioperl/status "Docker Repository on Quay")](https://quay.io/repository/bioperl/bioperl)
+
 This is meant to provide a reproducible and complete build of the main BioPerl distribution, including almost all dependencies. It is based on the bioperl-deps image (see below), which itself is currently based on Ubuntu 14.04.
 
 Currently the following tags are available:
@@ -19,6 +23,10 @@ Currently the following tags are available:
 Other BioPerl release-specific tags will be added as and when they are released.
 
 ## bioperl-deps
+
+[![Docker Hub Repository](https://img.shields.io/docker/automated/bioperl/bioperl-deps.svg)](https://hub.docker.com/r/bioperl/bioperl-deps/) [![Docker Hub Pulls](https://img.shields.io/docker/pulls/bioperl/bioperl-deps.svg)](https://hub.docker.com/r/bioperl/bioperl-deps/) [![Docker Hub Stars](https://img.shields.io/docker/stars/bioperl/bioperl-deps.svg)](https://hub.docker.com/r/bioperl/bioperl-deps/)
+
+[![Docker Repository on Quay](https://quay.io/repository/bioperl/bioperl-deps/status "Docker Repository on Quay")](https://quay.io/repository/bioperl/bioperl-deps)
 
 This image is meant to provide a well-defined reproducible base image for BioPerl that has pre-installed all dependencies of at least the main distribution.
 
