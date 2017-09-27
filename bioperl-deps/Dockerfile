@@ -22,12 +22,6 @@ RUN apt-get install --yes \
   gcc-multilib \
   perl
 
-# Install libraries that BioPerl dependencies depend on
-RUN apt-get install --yes \
-  libdb-dev \
-  zlib1g-dev \
-  graphviz
-
 # Install perl modules 
 RUN apt-get install --yes cpanminus
 
@@ -43,11 +37,9 @@ RUN cpanm \
 
 # Install perl modules for network and SSL (and their dependencies)
 RUN apt-get install --yes \
-  openssl \
   libssl-dev
 
 RUN cpanm \
-  IO::Socket::INET6 \
   LWP \
   LWP::Protocol::https
 
@@ -71,6 +63,11 @@ RUN cpanm \
   XML::Writer \
   XML::LibXML \
   XML::LibXSLT
+
+# Install libraries that BioPerl dependencies depend on
+RUN apt-get install --yes \
+  libdb-dev \
+  graphviz
 
 # Install what counts as BioPerl dependencies
 RUN cpanm \
