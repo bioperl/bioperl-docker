@@ -34,10 +34,23 @@ The benefit of this image is to allow anyone to build a version of BioPerl on to
 
 The image is available on Docker Hub as [bioperl/bioperl-deps]. At present there is only one tag, `latest`. The dependencies include all needed for BioPerl 1.6.x, and we anticipate also for 1.7.x. None of the dependencies should be incompatible with versions of BioPerl earlier than the current one, so it should be safe building earlier versions of BioPerl off of this image, too.
 
+## bioperl-builddeps
+
+[![Docker Hub Repository](https://img.shields.io/docker/automated/bioperl/bioperl-builddeps.svg)](https://hub.docker.com/r/bioperl/bioperl-builddeps/) [![Docker Hub Pulls](https://img.shields.io/docker/pulls/bioperl/bioperl-builddeps.svg)](https://hub.docker.com/r/bioperl/bioperl-builddeps/) [![Docker Hub Stars](https://img.shields.io/docker/stars/bioperl/bioperl-builddeps.svg)](https://hub.docker.com/r/bioperl/bioperl-builddeps/)
+
+[![Docker Repository on Quay](https://quay.io/repository/bioperl/bioperl-builddeps/status "Docker Repository on Quay")](https://quay.io/repository/bioperl/bioperl-builddeps)
+
+This image is meant to provide a well-defined reproducible base image for _building and installing BioPerl from source_.
+
+In addition to the dependencies pre-installed or `bioperl-deps` it includes dependencies of building and installing BioPerl from source using Dist::Zilla. Note that prior to v1.7.3, BioPerl uses Build.PL to build and install, not Dist::Zilla, and hence this image is not needed for building earlier versions from source.
+
+The image is available on Docker Hub as [bioperl/bioperl-builddeps]. At present there is only one tag, `latest`. The dependencies include all needed for BioPerl 1.7.3+.
+
 ## Acknowledgements
 
 The initial starting point for this work was the [bioperl-1.6.1924 Dockerfile created by @sophielemoine] at Genomic Paris Centre.
 
 [bioperl/bioperl]: https://hub.docker.com/r/bioperl/bioperl/
 [bioperl/bioperl-deps]: https://hub.docker.com/r/bioperl/bioperl-deps/
+[bioperl/bioperl-builddeps]: https://hub.docker.com/r/bioperl/bioperl-builddeps/
 [bioperl-1.6.1924 Dockerfile created by @sophielemoine]: https://github.com/GenomicParisCentre/dockerfiles/blob/master/bioperl/bioperl-1.6.924/Dockerfile
