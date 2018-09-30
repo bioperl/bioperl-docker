@@ -13,13 +13,20 @@ LABEL maintainer="Hilmar Lapp <hlapp@drycafe.net>"
 # in the builder stage
 WORKDIR /bioperl
 
+# Prevent error messages from debconf about non-interactive frontend
+ARG TERM=linux
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Install software needed to build BioPerl (not all are required to run it)
-RUN apt-get install --yes wget git && \
-  cpanm -n Dist::Zilla Dist::Zilla::Plugin::Git && \
-  wget --no-check-certificate \
-  -O master.tar.gz \
-  https://github.com/bioperl/bioperl-live/archive/master.tar.gz && \
-  tar xzf master.tar.gz && \
+RUN apt-get update --yes && \
+    apt-get install --yes git
+RUN cpanm -n Dist::Zilla Dist::Zilla::Plugin::Git
+
+# download BioPerl soure, install authordeps, build BioPerl
+RUN \
+  curl -L -s -o - \
+         https://github.com/bioperl/bioperl-live/archive/master.tar.gz | \
+    tar xzf - && \
   cd bioperl-live-master && \
   dzil authordeps | cpanm -n && \
   dzil build --in /bioperl/bioperl-build
@@ -31,7 +38,7 @@ FROM bioperl/bioperl-deps as final
 # Install modules recommended by BioPerl.
 # We can't include Bio::ASN1::EntrezGene here yet, because it declares
 # a dependency on BioPerl, thus pulling in BioPerl first.
-RUN cpanm -n\
+RUN cpanm -n \
   Bio::Phylo
 
 # -------------------------------------------------------------
@@ -41,11 +48,10 @@ RUN cpanm -n\
 # -------------------------------------------------------------
 # Copy the files produced in the previous build stage over to the 
 # final image
-WORKDIR /usr/local/src/bioperl-build
-COPY --from=builder /bioperl/bioperl-build .
+COPY --from=builder /bioperl/bioperl-build /usr/local/src/bioperl-build/
 
 # Install bioperl
-RUN cpanm -n .
+RUN cpanm -n /usr/local/src/bioperl-build
 
 # Install modules recommended by BioPerl that depend on BioPerl.
 # (Don't ask. See above.)
