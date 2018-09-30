@@ -4,7 +4,8 @@
 ############################################################
 
 # Set the base image to the BioPerl prebuilt prerequisites image
-FROM bioperl/bioperl-deps as builder
+# for building from source
+FROM bioperl/bioperl-builddeps as builder
 
 # File Author / Maintainer
 LABEL maintainer="Hilmar Lapp <hlapp@drycafe.net>"
@@ -12,15 +13,6 @@ LABEL maintainer="Hilmar Lapp <hlapp@drycafe.net>"
 # Set the working directory to where we will install bioperl
 # in the builder stage
 WORKDIR /bioperl
-
-# Prevent error messages from debconf about non-interactive frontend
-ARG TERM=linux
-ARG DEBIAN_FRONTEND=noninteractive
-
-# Install software needed to build BioPerl (not all are required to run it)
-RUN apt-get update --yes && \
-    apt-get install --yes git
-RUN cpanm -n Dist::Zilla Dist::Zilla::Plugin::Git
 
 # download BioPerl soure, install authordeps, build BioPerl
 RUN \
