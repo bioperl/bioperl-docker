@@ -18,5 +18,5 @@ RUN apt-get update --yes && \
     apt-get install --yes git
 RUN cpanm -n \
        Dist::Zilla \
-       Dist::Zilla::Plugin::Git
+       Dist::Zilla::Plugin::Git \
        Dist::Zilla::PluginBundle::BioPerl
