@@ -47,5 +47,7 @@ RUN cpanm -n /usr/local/src/bioperl-build
 
 # Install modules recommended by BioPerl that depend on BioPerl.
 # (Don't ask. See above.)
-RUN cpanm \
-  Bio::ASN1::EntrezGene
+## Temporarily commented out until this bringing in the last BioPerl
+## release from CPAN is fixed.
+# RUN cpanm \
+#   Bio::ASN1::EntrezGene
