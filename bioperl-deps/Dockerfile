@@ -29,6 +29,7 @@ RUN cpanm \
   CPAN::Meta \
   YAML \
   Digest::SHA \
+  Digest::SHA1 \
   Module::Build \
   Test::Most \
   Test::Weaken \
@@ -86,7 +87,8 @@ RUN cpanm \
   Spreadsheet::ParseExcel \
   IO::String \
   JSON \
-  Data::Stag
+  Data::Stag \
+  Cache::FileCache
 
 # Install database connectivity packages
 RUN apt-get install --yes \
