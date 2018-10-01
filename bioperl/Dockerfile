@@ -43,7 +43,7 @@ RUN cpanm -n \
 COPY --from=builder /bioperl/bioperl-build /usr/local/src/bioperl-build/
 
 # Install bioperl
-RUN cpanm -n /usr/local/src/bioperl-build
+RUN cpanm -v /usr/local/src/bioperl-build
 
 # Install modules recommended by BioPerl that depend on BioPerl.
 # (Don't ask. See above.)
